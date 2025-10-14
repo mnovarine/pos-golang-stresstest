@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
 )
@@ -65,7 +66,7 @@ func runStressTest(cmd *cobra.Command, args []string) {
 	fmt.Printf("URL: %s\n", url)
 	fmt.Printf("Total de Requisições: %d\n", requests)
 	fmt.Printf("Concorrência: %d\n", concurrency)
-	fmt.Println("=" + fmt.Sprintf("%*s", 50, "="))
+	fmt.Println("-" + strings.Repeat("-", 50))
 
 	// Executa o teste de carga
 	result := performLoadTest(url, requests, concurrency)

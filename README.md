@@ -1,14 +1,6 @@
-# StressTest CLI - Ferramenta de Teste de Carga
+# StressTest CLI
 
-Uma ferramenta CLI construída em Go para realizar testes de carga em serviços web.
-
-## Funcionalidades
-
-- 🚀 **Teste de Carga Simultâneo**: Configure requisições simultâneas para testar seus serviços
-- 📊 **Relatórios Detalhados**: Estatísticas abrangentes incluindo tempos de resposta, códigos de status e percentis
-- ⚡ **Rápido & Eficiente**: Construído com o excelente suporte de simultaneidade do Go
-- 📈 **Métricas de Desempenho**: Análise de tempos de resposta mín/máx/médio e percentis
-- 🎯 **Análise de Erros**: Relatório categorizado de erros para melhor depuração
+**Objetivo**: Criar um sistema CLI em Go para realizar testes de carga em um serviço web. O usuário deverá fornecer a URL do serviço, o número total de requests e a quantidade de chamadas simultâneas.
 
 ## Uso
 
@@ -20,23 +12,29 @@ Uma ferramenta CLI construída em Go para realizar testes de carga em serviços 
 
 ### Exemplos
 
-#### Uso Básico
-
 ```bash
-# Teste com parâmetros padrão
-./stresstest --url=https://httpbin.org/get
+# Executar o arquivo teste.sh para testar todos os cenários de teste
+./teste.sh
 
-# Parâmetros personalizados
-./stresstest --url=https://httpbin.org/get --requests=1000 --concurrency=50
+# Para testar os cenários específicos, utilizar os exemplos abaixo
 
-# Testar a página inicial do Google
-./stresstest --url=https://google.com --requests=100 --concurrency=10
+# 1. Teste com parâmetros padrão...
+go run main.go --url=https://httpbin.org/get
 
-# Teste de carga em um endpoint de API
-./stresstest --url=https://api.example.com/users --requests=500 --concurrency=25
+# 2. Parâmetros personalizados...
+go run main.go --url=https://httpbin.org/get --requests=1000 --concurrency=50
 
-# Teste com alta simultaneidade
-./stresstest --url=https://httpbin.org/delay/1 --requests=200 --concurrency=50
+# 3. Testar a página inicial do Google...
+go run main.go --url=https://google.com --requests=100 --concurrency=10
+
+# 4. Teste com alta simultaneidade...
+go run main.go --url=https://httpbin.org/delay/1 --requests=200 --concurrency=50
+
+# 5. Teste de error handling com endpoint inexistente...
+go run main.go --url=https://httpbin.org/status/404 --requests=5 --concurrency=2
+
+# 6. Teste de timeout...
+go run main.go --url=https://httpbin.org/delay/2 --requests=3 --concurrency=2
 ```
 
 ## Exemplo de Saída
@@ -78,7 +76,3 @@ Teste concluído com sucesso!
 
 ### Distribuição de Códigos de Status
 Mostra a distribuição dos códigos de status HTTP retornados pelo servidor.
-
-## Licença
-
-Licença MIT - veja o arquivo LICENSE para detalhes.
