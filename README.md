@@ -10,7 +10,14 @@
 - `--requests`: Número total de requisições a fazer (padrão: 100)
 - `--concurrency`: Número de requisições simultâneas (padrão: 10)
 
-### Exemplos
+### Compilar
+
+
+```bash
+go build -o stresstest .
+```
+
+### Testes
 
 ```bash
 # Executar o arquivo teste.sh para testar todos os cenários de teste
@@ -19,22 +26,22 @@
 # Para testar os cenários específicos, utilizar os exemplos abaixo
 
 # 1. Teste com parâmetros padrão...
-go run main.go --url=https://httpbin.org/get
+./stresstest --url=https://httpbin.org/get
 
 # 2. Parâmetros personalizados...
-go run main.go --url=https://httpbin.org/get --requests=1000 --concurrency=50
+./stresstest --url=https://httpbin.org/get --requests=1000 --concurrency=50
 
 # 3. Testar a página inicial do Google...
-go run main.go --url=https://google.com --requests=100 --concurrency=10
+./stresstest --url=https://google.com --requests=100 --concurrency=10
 
 # 4. Teste com alta simultaneidade...
-go run main.go --url=https://httpbin.org/delay/1 --requests=200 --concurrency=50
+./stresstest --url=https://httpbin.org/delay/1 --requests=200 --concurrency=50
 
 # 5. Teste de error handling com endpoint inexistente...
-go run main.go --url=https://httpbin.org/status/404 --requests=5 --concurrency=2
+./stresstest --url=https://httpbin.org/status/404 --requests=5 --concurrency=2
 
 # 6. Teste de timeout...
-go run main.go --url=https://httpbin.org/delay/2 --requests=3 --concurrency=2
+./stresstest --url=https://httpbin.org/delay/2 --requests=3 --concurrency=2
 ```
 
 ## Exemplo de Saída
